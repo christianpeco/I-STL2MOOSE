@@ -43,7 +43,7 @@ for i in range(0, files_num):
 
 # Generate geometry .geo file for Gmesh from .step solid model
 
-f = open("temp.geo", "w")
+f = open("integrated.geo", "w")
 
 for i in range(0, files_num):
     solid_string = args.N[i][:-4] + '_solid.step'
@@ -69,7 +69,7 @@ f.close()
 
 # Step solid file to .msh
 
-a = 'temp.geo'
+a = 'integrated.geo'
 
 string1 = "/Applications/Gmsh.app/Contents/MacOS/gmsh -3 " + a
 print(string1)
