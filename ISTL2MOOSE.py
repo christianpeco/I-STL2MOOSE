@@ -76,12 +76,12 @@ f.write('Delete;}{ }\n')
 
 for i in range(0, files_num):
   solid_string = args.N[i][:-4] + '_solid.step'
-  physurf_string = 'Physical' + '"' + 'Surface(' + input("Surface Name in Quotes") + '"' + ',' + str(i+1) + ')' + '"' + '=' + '"' + '{Vol2Suf_' + (i+1) + '[]};'
+  physurf_string = 'Physical' + '"' + 'Surface(' + input("Surface Name with no spaces in Quotes") + '"' + ',' + str(i+1) + ')' + '"' + '=' + '"' + '{Vol2Suf_' + (i+1) + '[]};'
   f.write(physurf_string)
   
 for i in range(0, files_num):
   solid_string = args.N[i][:-4] + '_solid.step'
-  phyvol_string = 'Physical' + '"' + 'Volume(' + input("Volume Name in Quotes") + '"' + ',' + str(i+1) + ')' + '"' + '=' + '"' + '{' + (i+1) + '};'
+  phyvol_string = 'Physical' + '"' + 'Volume(' + input("Volume Name with no spaces in Quotes") + '"' + ',' + str(i+1) + ')' + '"' + '=' + '"' + '{' + (i+1) + '};'
   f.write(phyvol_string)
 
 f.close()
