@@ -54,6 +54,14 @@ f.write('//+\n')
 f.write('SetFactory("OpenCASCADE");\n')
 f.write('//+\n')
 
+#Defining matricies of surfaces for each of the volumes
+
+for i in range(0, files_num):
+  solid_string = args.N[i][:-4] + '_solid.step'
+  surface_sting = 'Vol2Suf_'+ (i+1) + '[]' + '"' + '=' + '"' + 'CombinedBoundary' + '"' + '{Volume{' + str(i+1) + ';};'
+  f.write(surface_string)
+  
+  f.write('//+\n')
 
 f.write('BooleanFragments{')
 
@@ -63,6 +71,18 @@ for i in range(0, files_num):
     f.write(string_vol)
 
 f.write('Delete;}{ }\n')
+
+#Defining Physical Surfaces & Volumes
+
+for i in range(0, files_num):
+  solid_string = args.N[i][:-4] + '_solid.step'
+  physurf_string = 'Physical' + '"' + 'Surface(' + input("Surface Name in Quotes") + '"' + ',' + str(i+1) + ')' + '"' + '=' + '"' + '{Vol2Suf_' + (i+1) + '[]};'
+  f.write(physurf_string)
+  
+for i in range(0, files_num):
+  solid_string = args.N[i][:-4] + '_solid.step'
+  phyvol_string = 'Physical' + '"' + 'Volume(' + input("Volume Name in Quotes") + '"' + ',' + str(i+1) + ')' + '"' + '=' + '"' + '{' + (i+1) + '};'
+  f.write(phyvol_string)
 
 f.close()
 
