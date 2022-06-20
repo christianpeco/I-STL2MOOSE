@@ -27,6 +27,11 @@ parser.add_argument('--gmesh', metavar='gmesh_path', type=str, nargs='+', requir
 parser.add_argument('--freecad', metavar='freecad_path', type=str, nargs='+', required=True,
                     help='path to current freecad')
 
+# FreeCAD path to executable in the system
+parser.add_argument('--levels', metavar='levels', type=int, nargs='+', required=True,
+                    help='path to current freecad')
+
+
 args = parser.parse_args()
 ################# Finish Argument Parsing #################
 
@@ -39,7 +44,6 @@ string0 = str(args.freecad[0])
 for i in range(0, files_num):
     string1 = string0 + ' ' + 'mmstl2solidstep.py' + ' ' + args.N[i]
     os.system(string1)
-
 
 # Generate geometry .geo file for Gmesh from .step solid model
 
@@ -54,45 +58,47 @@ f.write('//+\n')
 f.write('SetFactory("OpenCASCADE");\n')
 f.write('//+\n')
 
-#Defining matricies of surfaces for each of the volumes
+#Defining surface boundary for each of the volumes
 
 for i in range(0, files_num):
-  solid_string = args.N[i][:-4] + '_solid.step'
-  surface_sting = 'Vol2Suf_'+ (i+1) + '[]' + '"' + '=' + '"' + 'CombinedBoundary' + '"' + '{Volume{' + str(i+1) + ';};'
-  f.write(surface_string)
+    solid_string = 'Suf' + str(i + 1) + '[] = CombinedBoundary {Volume{' + str(i + 1) + '};};\n'
+    f.write(solid_string)
   
-  f.write('//+\n')
-
-f.write('BooleanFragments{')
-
-for i in range(0, files_num):
-    solid_string = args.N[i][:-4] + '_solid.step'
-    string_vol = 'Volume{' + str(i+1) + '};'
-    f.write(string_vol)
-
-f.write('Delete;}{ }\n')
-
-#Defining Physical Surfaces & Volumes
-
-for i in range(0, files_num):
-  solid_string = args.N[i][:-4] + '_solid.step'
-  physurf_string = 'Physical' + '"' + 'Surface(' + input("Surface Name with no spaces in Quotes") + '"' + ',' + str(i+1) + ')' + '"' + '=' + '"' + '{Vol2Suf_' + (i+1) + '[]};'
-  f.write(physurf_string)
+# Generation of Booleans (involves hierarchy levels of embedding)  
   
+f.write('//+\n')
+f.write('BooleanFragments{Volume{1')
+for i in range(1, files_num):
+    solid_string = ',' + str(i + 1)
+    f.write(solid_string)
+f.write('}; Delete;}{ };\n')
+
+# Physical surface tags for boundary conditions
+
+f.write('//+\n')
 for i in range(0, files_num):
-  solid_string = args.N[i][:-4] + '_solid.step'
-  phyvol_string = 'Physical' + '"' + 'Volume(' + input("Volume Name with no spaces in Quotes") + '"' + ',' + str(i+1) + ')' + '"' + '=' + '"' + '{' + (i+1) + '};'
-  f.write(phyvol_string)
+    solid_string = 'Physical Surface("Boundary' + str(i + 1) + '", ' + str(i + 1) + ') = {Suf' + str(i + 1) + '[]};\n'
+    f.write(solid_string)
+    
+
+# Physical volume tags for MOOSE  
+
+f.write('//+\n')
+for i in range(0, files_num):
+    solid_string = 'Physical Volume("Block' + str(i + 1) + '", ' + str(i + 1) + ') = {' + str(i + 1) + '};\n'
+    f.write(solid_string)
 
 f.close()
-
 
 # Step solid file to .msh
 
 a = 'integrated.geo'
 
-string1 = "/Applications/Gmsh.app/Contents/MacOS/gmsh -3 " + a
+string0 = str(args.gmesh[0])
+string1 = string0 + ' -3 ' + a
 print(string1)
 
 os.system(string1)
-os.system("ls -l")
+
+# Output as integrated.msh file
+
