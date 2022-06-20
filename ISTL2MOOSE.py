@@ -27,11 +27,6 @@ parser.add_argument('--gmesh', metavar='gmesh_path', type=str, nargs='+', requir
 parser.add_argument('--freecad', metavar='freecad_path', type=str, nargs='+', required=True,
                     help='Path to current freecad.')
 
-# FreeCAD path to executable in the system
-parser.add_argument('--levels', metavar='levels', type=int, nargs='+', required=True,
-                    help='Path to current freecad.')
-
-
 args = parser.parse_args()
 ################# Finish Argument Parsing #################
 
