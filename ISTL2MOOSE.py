@@ -17,19 +17,19 @@ parser = argparse.ArgumentParser(description='command line options')
 # Aligned, transformed and re-meshed files .stl from the preprocessor (usually MeshMixer)
 
 parser.add_argument('--N', metavar='file1.stl', type=str, nargs='+', required=True,
-                    help='number of stl files to process')
+                    help='Number of stl files to process. Note: the files have to be ordered from lower to higher hierarchy level.')
 
 # Gmesh path to executable in the system
 parser.add_argument('--gmesh', metavar='gmesh_path', type=str, nargs='+', required=True,
-                    help='path to current gmesh')
+                    help='Path to current gmesh.')
 
 # FreeCAD path to executable in the system
 parser.add_argument('--freecad', metavar='freecad_path', type=str, nargs='+', required=True,
-                    help='path to current freecad')
+                    help='Path to current freecad.')
 
 # FreeCAD path to executable in the system
 parser.add_argument('--levels', metavar='levels', type=int, nargs='+', required=True,
-                    help='path to current freecad')
+                    help='Path to current freecad.')
 
 
 args = parser.parse_args()
