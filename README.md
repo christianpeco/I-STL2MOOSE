@@ -14,7 +14,9 @@ The STL files transformed by the I-STL2MOOSE software are altered to the desired
 **Usage:**
 To use the I-STL2MOOSE software, both the ISTL2MOOSE.py and the mm2solidstep.py scripts should be downloaded to the same location. Using the command line, the ISTL2MOOSE software can be launched by executing:
 
+
 python ISTL2MOOSE.py  --N File1.stl File2.stl --gmesh "Gmsh Path" --freecad "FreeCAD Path"
+
 
 Three inputs are required: N, gmesh, and freecad. 
 - N: The number of files to process. Every STL file should be listed for this variable. The files must be listed in the order from the lowest to the highest hierarchy level. 
@@ -23,7 +25,9 @@ Three inputs are required: N, gmesh, and freecad.
 
 The inputfiles folder of this repository contains sample STL files that have already been altered in MeshMixer. There are files for two separate examples. The *AntHead.stl* and *AntSphere.stl* files can be inputted to generate a mesh with the sphere embedded within the ant head. A sample script for this example is:
 
+
 python ISTL2MOOSE.py --N AntSphere.stl AntHead.stl --gmesh Applications/Gmsh.app/contents/MacOS/gmsh --freecad Applications/FreeCAD.app/contents/MacOS/FreeCAD
+
 
 Notice that the *AntSphere.stl* file is listed before the *AntHead.stl* because the sphere is to be embedded within the ant head. The resulting mesh of these input files can be found in the Results folder of this repository. The file is labled *AntHead.msh.zip*. 
 
