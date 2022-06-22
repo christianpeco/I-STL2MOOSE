@@ -1,6 +1,7 @@
 **Description**:**I-STL2MOOSE**
 
 **Licensing**: I-STL2MOOSE is distributed under MIT LICENSE as descripted below.
+
 -----------------------------------------------  XXXXXXXX LICENSE XXXXXXXX  ---------------------------------------------------
 
 Copyright <2022> <Joe Sgarrella, Farshad Ghanbari, Christian Peco>
