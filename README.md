@@ -26,12 +26,12 @@ The STL files transformed by the I-STL2MOOSE software are altered to the desired
 **Usage:**
 To use the I-STL2MOOSE software, both the ISTL2MOOSE.py and the mm2solidstep.py scripts should be downloaded to the same location. Using the command line, the ISTL2MOOSE software can be launched by executing:
 
-python ISTL2MOOSE.py  --N File1.stl File2.stl --gmesh "Gmsh Path" --freecad "FreeCAD Path"
+python ISTL2MOOSE.py  --N File1.stl File2.stl --gmesh "Gmsh Path" --freecad "FreeCADCmd Path"
 
 Three inputs are required: N, gmesh, and freecad. 
 - N: The number of files to process. Every STL file should be listed for this variable. The files must be listed in the order from the lowest to the highest hierarchy level. 
 - gmesh: This is the path to the current Gmsh
-- freecad: This is the path to the current FreeCAD
+- freecad: This is the path to the current FreeCADCmd
 
 **Usage Example:**
 
