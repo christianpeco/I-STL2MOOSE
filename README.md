@@ -41,7 +41,7 @@ python ISTL2MOOSE.py --N AntSphere.stl AntHead.stl --gmesh Applications/Gmsh.app
 
 Notice that the *AntSphere.stl* file is listed before the *AntHead.stl* because the sphere is to be embedded within the ant head. The resulting mesh of these input files can be found in the Results folder of this repository. The file is labled *AntHead.msh.zip*. 
 
-The second example requires five STL input files. These files are "". The mesh generated in this example is a cube with two spheres embedded within. Additionally, each sphere has a single smaller sphere embedded. This provides an example of a mesh with more than two hierarch levels that must be considered with entering the STL files in th script. The command call, in a conventional Mac OS X is:
+The second example requires five STL input files. The mesh generated in this example is a cube with two spheres embedded within. Additionally, each sphere has a single smaller sphere embedded. This provides an example of a mesh with more than two hierarch levels that must be considered with entering the STL files in th script. The command call, in a conventional Mac OS X is:
 
 python ISTL2MOOSE.py --N mm_smallspehere1.stl mm_smallspehere2.stl mm_medspehere1.stl mm_medspehere2.stl mm_largecube.stl --gmesh Applications/Gmsh.app/contents/MacOS/gmsh --freecad Applications/FreeCAD.app/contents/MacOS/FreeCAD
 
