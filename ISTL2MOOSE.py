@@ -35,11 +35,11 @@ args = parser.parse_args()
 
 files_num = len(args.N)
 
-# string0 = str(args.freecad[0])
-#
-# for i in range(0, files_num):
-#     string1 = string0 + ' ' + 'mmstl2solidstep.py' + ' ' + args.N[i]
-#     os.system(string1)
+string0 = str(args.freecad[0])
+
+for i in range(0, files_num):
+    string1 = string0 + ' ' + 'mmstl2solidstep.py' + ' ' + args.N[i]
+    os.system(string1)
 
 # Generate geometry .geo file for Gmsh from .step solid model
 
