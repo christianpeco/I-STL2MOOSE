@@ -34,4 +34,16 @@ python ISTL2MOOSE.py --N mm_smallspehere1.stl mm_smallspehere2.stl mm_medspehere
 Again notice the ordering of the STL files. The files are arranged from the lowest hierarchy to the highest. The resulting mesh can also be found in the Results folder. The file is labeled *MultiLayer.msh.zip*.
 
 
+**Troubleshooting:**
+
+Software has been tested in Mac OS X Catalina/Monterey, Linux Debian 10-12 and Windows
+10-11, Gmsh 4.9.5-4.10.5 and FreeCAD 0.19.
+
+This section will record installation/running issues. 
+Users that find a problem can report it to cxp598@psu.edu.
+
+
+
+ 
+
 

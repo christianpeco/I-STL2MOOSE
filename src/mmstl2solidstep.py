@@ -1,7 +1,7 @@
 """
 Python script: mmstl2solidstep.py
 Description: macro that imports a MeshMixer processed STL file and generates a solid model for volumetrical meshing in Gmesh    
-
+**Licensing**: I-STL2MOOSE is distributed under MIT LICENSE.
 """
 import sys
 import FreeCAD

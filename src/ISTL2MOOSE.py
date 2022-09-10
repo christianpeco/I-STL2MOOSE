@@ -2,6 +2,7 @@
 Python script: ISTL2MOOSE.py
 Description: procedural script that imports a MeshMixer processed STL file
 and generates a MOOSE readable volumetrical .msh file
+**Licensing**: I-STL2MOOSE is distributed under MIT LICENSE. 
 """
 
 import sys
