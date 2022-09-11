@@ -21,15 +21,19 @@ Three inputs are required: N, gmsh, and freecad.
 
 **Usage Example:**
 
-The inputfiles folder of this repository contains sample STL files that have already been altered in MeshMixer. There are files for two separate examples. The *AntHead.stl* and *AntSphere.stl* files can be inputted to generate a mesh with the sphere embedded within the ant head. A sample call for this example, in a conventional Mac OS X is:
+The inputfiles folder of this repository contains sample STL files that have
+already been altered in MeshMixer. There are files for two separate examples.
+The *AntHead.stl* and *AntSphere.stl* files can be inputted to generate a mesh
+with the sphere embedded within the ant head. A sample call for this example,
+in Mac OS X Monterey is:
 
-python ISTL2MOOSE.py --N AntSphere.stl AntHead.stl --gmsh Applications/Gmsh.app/contents/MacOS/gmsh --freecad Applications/FreeCAD.app/contents/MacOS/FreeCAD
+python ISTL2MOOSE.py --N AntSphere.stl AntHead.stl --gmsh /Applications/Gmsh.app/contents/MacOS/gmsh --freecad /Applications/FreeCAD.app/Contents/Resources/bin/freecadcmd
 
 Notice that the *AntSphere.stl* file is listed before the *AntHead.stl* because the sphere is to be embedded within the ant head. The resulting mesh of these input files can be found in the Results folder of this repository. The file is labled *AntHead.msh.zip*. 
 
 The second example requires five STL input files. The mesh generated in this example is a cube with two spheres embedded within. Additionally, each sphere has a single smaller sphere embedded. This provides an example of a mesh with more than two hierarchy levels that must be considered with entering the STL files in th script. The command call, in a conventional Mac OS X is:
 
-python ISTL2MOOSE.py --N mm_smallspehere1.stl mm_smallspehere2.stl mm_medspehere1.stl mm_medspehere2.stl mm_largecube.stl --gmsh Applications/Gmsh.app/contents/MacOS/gmsh --freecad Applications/FreeCAD.app/contents/MacOS/FreeCAD
+python ISTL2MOOSE.py --N mm_smallsphere1.stl mm_smallsphere2.stl mm_medsphere1.stl mm_medsphere2.stl mm_largecube.stl --gmsh /Applications/Gmsh.app/contents/MacOS/gmsh --freecad /Applications/FreeCAD.app/Contents/Resources/bin/freecadcmd
 
 Again notice the ordering of the STL files. The files are arranged from the lowest hierarchy to the highest. The resulting mesh can also be found in the Results folder. The file is labeled *MultiLayer.msh.zip*.
 
